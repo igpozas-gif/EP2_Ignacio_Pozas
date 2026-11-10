@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="cl.duoc.pataverde.controller.MainController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Registro de pacientes"/>
+
+    <HBox spacing="20.0">
+        <!-- Formulario de Entrada (Izquierda) -->
+        <VBox prefWidth="300.0" spacing="10.0">
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                <Label prefWidth="70.0" text="Tipo:"/>
+                <ComboBox fx:id="cmbTipo" prefWidth="180.0"/>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                <Label prefWidth="70.0" text="Nombre:"/>
+                <TextField fx:id="txtNombre" prefWidth="180.0"/>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                <Label prefWidth="70.0" text="Edad:"/>
+                <TextField fx:id="txtEdad" prefWidth="180.0"/>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                <Label prefWidth="70.0" text="Peso (kg):"/>
+                <TextField fx:id="txtPeso" prefWidth="180.0"/>
+            </HBox>
+
+            <!-- Datos Específicos del Perro -->
+            <TitledPane animated="false" collapsible="false" text="Datos del perro">
+                <VBox spacing="8.0">
+                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                        <Label prefWidth="60.0" text="Raza:"/>
+                        <TextField fx:id="txtRaza" prefWidth="160.0"/>
+                    </HBox>
+                    <CheckBox fx:id="chkVacunado" text="Vacunado"/>
+                    <CheckBox fx:id="chkAdopcion" text="Disponible para adopción"/>
+                </VBox>
+            </TitledPane>
+
+            <!-- Datos Específicos del Gato -->
+            <TitledPane animated="false" collapsible="false" text="Datos del gato">
+                <VBox spacing="8.0">
+                    <CheckBox fx:id="chkExterior" text="Vive en exterior"/>
+                </VBox>
+            </TitledPane>
+
+            <Button fx:id="btnRegistrar" onAction="#handleRegistrar" prefWidth="100.0" text="Registrar"/>
+        </VBox>
+
+        <!-- Tabla y Búsqueda (Derecha) -->
+        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                <Label text="Buscar mascota:"/>
+                <TextField fx:id="txtBuscar" promptText="Filtrar por nombre..." prefWidth="250.0"/>
+            </HBox>
+
+            <TableView fx:id="tablaMascotas" prefHeight="300.0">
+                <columns>
+                    <TableColumn fx:id="colTipo" prefWidth="80.0" text="Tipo"/>
+                    <TableColumn fx:id="colNombre" prefWidth="120.0" text="Nombre"/>
+                    <TableColumn fx:id="colEdad" prefWidth="60.0" text="Edad"/>
+                    <TableColumn fx:id="colPeso" prefWidth="80.0" text="Peso (kg)"/>
+                    <TableColumn fx:id="colCosto" prefWidth="120.0" text="Costo consulta"/>
+                </columns>
+            </TableView>
+
+            <Button fx:id="btnEliminar" onAction="#handleEliminar" text="Eliminar"/>
+        </VBox>
+    </HBox>
+
+    <!-- Área de Mensajes Integrada -->
+    <Label fx:id="lblMensaje" style="-fx-font-weight: bold;" text=""/>
+</VBox>
